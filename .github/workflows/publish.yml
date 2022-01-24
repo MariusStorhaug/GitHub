@@ -3,8 +3,8 @@ name: Publish Module
 on:
   push:
     paths:
-    - src\GitHub\**
-    - .github\workflows\publish.yml
+    - src/GitHub/**
+    - .github/workflows/publish.yml
 
 defaults:
   run:
@@ -19,4 +19,4 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: |
-          Publish-Module -Path 'src\GitHub' -NuGetApiKey "$env:APIKey" -Verbose
+          Publish-Module -Path 'src/GitHub' -NuGetApiKey "$env:APIKey" -Verbose
