@@ -13,16 +13,16 @@ $script:Token = ''
 function Connect-GitHubAccount {
     [CmdletBinding()]
     param (
-        [Parameter(Mandatory, Position = 0)]
+        [Parameter()]
         [String]
         $Owner,
-        [Parameter(Mandatory, Position = 1)]
+        [Parameter()]
         [String]
         $Repo,
-        [Parameter(Mandatory, Position = 2)]
+        [Parameter(Mandatory)]
         [String]
         $Token,
-        [Parameter(Position = 3)]
+        [Parameter()]
         [String]
         $APIBaseURI = 'https://api.github.com'
     )
