@@ -1,12 +1,6 @@
 name: Publish Module
 
-on:
-  workflow_dispatch:
-  push:
-    branches: 
-    - '*'
-    paths: 
-    - '**/src'
+on: [push]
 
 env:
   apikey: ${{ secret.apikey }}
@@ -15,7 +9,8 @@ jobs:
   publish:
     runs-on: 'ubuntu-latest'
     steps:
+      - uses: actions/checkout@v2
       - shell: pwsh
         run: |
-          Get-Module -ListAvailable
-          Write-Output "$env:apikey"
+          Get-ChildItem -Recurse | Select -ExpandProperty FullName | Sort
+          Write-Output "apikey $env:apikey"
