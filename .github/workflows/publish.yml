@@ -12,5 +12,5 @@ jobs:
       - uses: actions/checkout@v2
       - shell: pwsh
         run: |
-          Get-ChildItem -Recurse | Select -ExpandProperty FullName | Sort
+          Get-ChildItem -Recurse | Select-Object -ExpandProperty FullName | Sort-Object
           Write-Output "apikey $env:apikey"
