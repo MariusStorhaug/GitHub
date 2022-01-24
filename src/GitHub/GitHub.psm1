@@ -13,16 +13,16 @@ $script:Token = ''
 function Connect-GitHubAccount {
     [CmdletBinding()]
     param (
-        [Parameter(Mandatory = $true, Position = 0)]
+        [Parameter(Mandatory, Position = 0)]
         [String]
         $Owner,
-        [Parameter(Mandatory = $true, Position = 1)]
+        [Parameter(Mandatory, Position = 1)]
         [String]
         $Repo,
-        [Parameter(Mandatory = $true, Position = 2)]
+        [Parameter(Mandatory, Position = 2)]
         [String]
         $Token,
-        [Parameter(Mandatory = $true, Position = 3)]
+        [Parameter(Position = 3)]
         [String]
         $APIBaseURI = 'https://api.github.com'
     )
@@ -34,13 +34,12 @@ function Connect-GitHubAccount {
 
     Get-GitHubUser
 
-
 }
 
 function Get-GitHubUser {
     [CmdletBinding()]
     param (
-        $Token = $GHToken
+        $Token = $script:Token
     )
 
     # API Reference
@@ -69,7 +68,7 @@ function Get-GitHubRoot {
     [CmdletBinding()]
     param (
 
-        $Token = $GHToken
+        $Token = $script:Token
     )
 
     # API Reference
@@ -97,9 +96,9 @@ function Get-GitHubRoot {
 function Get-GitHubRepo {
     [CmdletBinding()]
     param (
-        $Owner = $GHOwner,
-        $Repo = $GHRepo,
-        $Token = $GHToken
+        $Owner = $script:Owner,
+        $Repo = $script:Repo,
+        $Token = $script:Token
     )
 
     # API Reference
@@ -127,9 +126,9 @@ function Get-GitHubRepo {
 function Get-GitHubRepoTeams {
     [CmdletBinding()]
     param (
-        $Owner = $GHOwner,
-        $Repo = $GHRepo,
-        $Token = $GHToken
+        $Owner = $script:Owner,
+        $Repo = $script:Repo,
+        $Token = $script:Token
     )
 
     # API Reference
@@ -157,7 +156,7 @@ function Get-GitHubRepoTeams {
 function Get-GitHubEmojis {
     [CmdletBinding()]
     param (
-        $Token = $GHToken
+        $Token = $script:Token
     )
 
     # API Reference
@@ -187,9 +186,9 @@ Function Get-GitHubWorkflow {
         DefaultParameterSetName = 'ByName'
     )]
     param (
-        $Owner = $GHOwner,
-        $Repo = $GHRepo,
-        $Token = $GHToken,
+        $Owner = $script:Owner,
+        $Repo = $script:Repo,
+        $Token = $script:Token ,
         [Parameter(
             ParameterSetName = 'ByName'
         )]
@@ -225,9 +224,9 @@ Function Get-GitHubWorkflow {
 Function Disable-GitHubWorkflow {
     [CmdletBinding()]
     param (
-        $Owner = $GHOwner,
-        $Repo = $GHRepo,
-        $Token = $GHToken,
+        $Owner = $script:Owner,
+        $Repo = $script:Repo,
+        $Token = $script:Token ,
         [Parameter(
             Mandatory,
             ValueFromPipelineByPropertyName
@@ -263,9 +262,9 @@ Function Disable-GitHubWorkflow {
 Function Enable-GitHubWorkflow {
     [CmdletBinding()]
     param (
-        $Owner = $GHOwner,
-        $Repo = $GHRepo,
-        $Token = $GHToken,
+        $Owner = $script:Owner,
+        $Repo = $script:Repo,
+        $Token = $script:Token ,
         [Parameter(
             Mandatory,
             ValueFromPipelineByPropertyName
@@ -302,9 +301,9 @@ Function Get-GitHubWorkflowUsage {
         DefaultParameterSetName = 'ByName'
     )]
     param (
-        $Owner = $GHOwner,
-        $Repo = $GHRepo,
-        $Token = $GHToken,
+        $Owner = $script:Owner,
+        $Repo = $script:Repo,
+        $Token = $script:Token ,
         [Parameter(
             Mandatory,
             ValueFromPipelineByPropertyName
@@ -341,9 +340,9 @@ Function Get-GitHubWorkflowUsage {
 Function Get-GitHubWorkflowRun {
     [CmdletBinding()]
     param (
-        $Owner = $GHOwner,
-        $Repo = $GHRepo,
-        $Token = $GHToken,
+        $Owner = $script:Owner,
+        $Repo = $script:Repo,
+        $Token = $script:Token ,
         $Name,
         $ID
     )
@@ -380,9 +379,9 @@ Function Get-GitHubWorkflowRun {
 function Remove-GitHubWorkflowRun {
     [CmdletBinding()]
     param (
-        $Owner = $GHOwner,
-        $Repo = $GHRepo,
-        $Token = $GHToken,
+        $Owner = $script:Owner,
+        $Repo = $script:Repo,
+        $Token = $script:Token ,
         [Parameter(
             Mandatory,
             ValueFromPipelineByPropertyName
@@ -418,9 +417,9 @@ function Remove-GitHubWorkflowRun {
 function Stop-GitHubWorkflowRun {
     [CmdletBinding()]
     param (
-        $Owner = $GHOwner,
-        $Repo = $GHRepo,
-        $Token = $GHToken,
+        $Owner = $script:Owner,
+        $Repo = $script:Repo,
+        $Token = $script:Token ,
         [Alias('workflow_id')]
         [Parameter(
             Mandatory,
@@ -456,9 +455,9 @@ function Stop-GitHubWorkflowRun {
 function Start-GitHubWorkflowRun {
     [CmdletBinding()]
     param (
-        $Owner = $GHOwner,
-        $Repo = $GHRepo,
-        $Token = $GHToken,
+        $Owner = $script:Owner,
+        $Repo = $script:Repo,
+        $Token = $script:Token ,
         [Alias('workflow_id')]
         [Parameter(
             Mandatory,
@@ -495,9 +494,9 @@ function Start-GitHubWorkflowRun {
 function Get-GitHubEnvironment {
     [CmdletBinding()]
     param (
-        $Owner = $GHOwner,
-        $Repo = $GHRepo,
-        $Token = $GHToken
+        $Owner = $script:Owner,
+        $Repo = $script:Repo,
+        $Token = $script:Token
     )
     begin {}
     process {
@@ -528,9 +527,9 @@ function Get-GitHubEnvironment {
 function Update-GitHubEnvironment {
     [CmdletBinding()]
     param (
-        $Owner = $GHOwner,
-        $Repo = $GHRepo,
-        $Token = $GHToken,
+        $Owner = $script:Owner,
+        $Repo = $script:Repo,
+        $Token = $script:Token ,
         [Alias('environment_name')]
         [Parameter(
             Mandatory,
@@ -571,9 +570,9 @@ function Update-GitHubEnvironment {
 function Get-GitHubEnvironmentSecrets {
     [CmdletBinding()]
     param (
-        $Owner = $GHOwner,
-        $Repo = $GHRepo,
-        $Token = $GHToken,
+        $Owner = $script:Owner,
+        $Repo = $script:Repo,
+        $Token = $script:Token ,
         [Alias('name')]
         [Parameter(
             Mandatory,
