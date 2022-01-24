@@ -1,6 +1,10 @@
 name: Publish Module
 
-on: [push]
+on:
+  push:
+    paths:
+    - src\GitHub\**
+    - .github\workflows\publish.yml
 
 defaults:
   run:
