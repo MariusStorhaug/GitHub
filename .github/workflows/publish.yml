@@ -2,15 +2,17 @@ name: Publish Module
 
 on: [push]
 
+defaults:
+  run:
+    shell: pwsh
+
 env:
-  apikey: ${{ secrets.apikey }}
+  APIKey: ${{ secrets.apikey }}
 
 jobs:
   publish:
     runs-on: 'ubuntu-latest'
     steps:
       - uses: actions/checkout@v2
-      - shell: pwsh
-        run: |
-          Get-ChildItem -Recurse | Select-Object -ExpandProperty FullName | Sort-Object
-          Write-Output "apikey $env:apikey"
+      - run: |
+          Publish-Module -Path 'src\GitHub' -NuGetApiKey "$env:APIKey" -Verbose
