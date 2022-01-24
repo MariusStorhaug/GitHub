@@ -3,7 +3,7 @@ name: Publish Module
 on: [push]
 
 env:
-  apikey: ${{ secret.apikey }}
+  apikey: ${{ secrets.apikey }}
 
 jobs:
   publish:
