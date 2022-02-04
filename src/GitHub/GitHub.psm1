@@ -196,29 +196,37 @@ Function Get-GitHubWorkflow {
         [Parameter(
             ParameterSetName = 'ByID'
         )]
-        [string] $ID
+        [string] $ID,
+        [int] $PageSize = 100
     )
 
     # API Reference
-    # https://docs.github.com/en/rest/reference/actions#list-workflow-runs-for-a-repository
-    $APICall = @{
-        Uri     = "$APIBaseURI/repos/$Owner/$Repo/actions/workflows"
-        Headers = @{
-            Authorization  = "token $Token"
-            'Content-Type' = 'application/json'
+    # https://docs.github.com/en/rest/reference/actions#list-repository-workflows
+    $processedPages = 0
+    $workflows = @()
+    do {
+        $processedPages += 1
+        $APICall = @{
+            Uri     = "$APIBaseURI/repos/$Owner/$Repo/actions/workflows?per_page=$PageSize&page=$processedPages"
+            Headers = @{
+                Authorization  = "token $Token"
+                'Content-Type' = 'application/json'
+            }
+            Method  = 'GET'
+            Body    = @{} | ConvertTo-Json -Depth 100
         }
-        Method  = 'GET'
-        Body    = @{} | ConvertTo-Json -Depth 100
-    }
-    try {
-        if ($PSBoundParameters.ContainsKey('Verbose')) {
-            $APICall
+        try {
+            if ($PSBoundParameters.ContainsKey('Verbose')) {
+                $APICall
+            }
+            $Response = Invoke-RestMethod @APICall
+        } catch {
+            throw $_
         }
-        $Response = Invoke-RestMethod @APICall
-    } catch {
-        throw $_
-    }
-    return $Response.workflows | Where-Object name -Match $name | Where-Object id -Match $id
+        $workflows += $Response.workflows | Where-Object name -Match $name | Where-Object id -Match $id
+    } while ($Response.total_count -eq 100)
+    
+    return $workflows
 }
 
 Function Disable-GitHubWorkflow {
