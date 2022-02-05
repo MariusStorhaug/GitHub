@@ -5,93 +5,33 @@
 # https://docs.github.com/en/rest/overview/resources-in-the-rest-api
 # https://docs.github.com/en/rest/reference
 
-$script:APIBaseURI = 'https://api.github.com'
-$script:Owner = ''
-$script:Repo = ''
-$script:Token = ''
+<#
+.SYNOPSIS
+Short description
 
-function Connect-GitHubAccount {
-    [CmdletBinding()]
-    param (
-        [Parameter()]
-        [String]
-        $Owner,
-        [Parameter()]
-        [String]
-        $Repo,
-        [Parameter(Mandatory)]
-        [String]
-        $Token,
-        [Parameter()]
-        [String]
-        $APIBaseURI = 'https://api.github.com'
-    )
+.DESCRIPTION
+Long description
 
-    $script:APIBaseURI = $APIBaseURI
-    $script:Owner = $Owner
-    $script:Repo = $Repo
-    $script:Token = $Token
+.PARAMETER Token
+Parameter description
 
-    Get-GitHubUser
+.EXAMPLE
+An example
 
-}
-
-function Get-GitHubUser {
-    [CmdletBinding()]
-    param (
-        $Token = $script:Token
-    )
-
-    # API Reference
-    # https://docs.github.com/en/rest/reference/users#get-the-authenticated-user
-    $APICall = @{
-        Uri     = "$APIBaseURI/user"
-        Headers = @{
-            Authorization  = "token $Token"
-            'Content-Type' = 'application/json'
-        }
-        Method  = 'GET'
-        Body    = @{} | ConvertTo-Json -Depth 100
-    }
-    try {
-        if ($PSBoundParameters.ContainsKey('Verbose')) {
-            $APICall
-        }
-        $Response = Invoke-RestMethod @APICall
-    } catch {
-        throw $_
-    }
-    return $Response
-}
-
+.NOTES
+https://docs.github.com/en/rest/reference/meta#github-api-root
+#>
 function Get-GitHubRoot {
     [CmdletBinding()]
     param (
-
         $Token = $script:Token
     )
 
-    # API Reference
-    # https://docs.github.com/en/rest/reference/meta#github-api-root
-    $APICall = @{
-        Uri     = "$APIBaseURI/"
-        Headers = @{
-            Authorization  = "token $Token"
-            'Content-Type' = 'application/json'
-        }
-        Method  = 'GET'
-        Body    = @{} | ConvertTo-Json -Depth 100
-    }
-    try {
-        if ($PSBoundParameters.ContainsKey('Verbose')) {
-            $APICall
-        }
-        $Response = Invoke-RestMethod @APICall
-    } catch {
-        throw $_
-    }
+    Invoke-GitHubAPI -Token $Token
+
     return $Response
 }
+
 
 function Get-GitHubRepo {
     [CmdletBinding()]
@@ -225,7 +165,7 @@ Function Get-GitHubWorkflow {
         }
         $workflows += $Response.workflows | Where-Object name -Match $name | Where-Object id -Match $id
     } while ($Response.total_count -eq 100)
-    
+
     return $workflows
 }
 

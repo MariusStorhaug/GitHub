@@ -20,19 +20,25 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
 
+      - name: Find changed modules
+        run: |
+          $Commit = 'HEAD'
+          $CompareCommit = 'HEAD^'
+          Write-Verbose "Gathering modified files between [$Commit] and [$CompareCommit]" -Verbose
+          $Diff = git diff --name-only --diff-filter=AM $CompareCommit $Commit
+          $ModifiedFiles = $Diff | Get-Item
+          Write-Verbose 'The following files have been added or modified:' -Verbose
+          $ModifiedFiles | ForEach-Object {
+              Write-Verbose (' - [{0}]' -f $_.FullName) -Verbose
+          }
+
       - name: Install chained modules
         run: |
-          Find-Module -Name GitHub* | Where-Object CompanyName -eq MariusStorhaug | Install-Module -Force
-          Find-Module -Name GitHub* |
-              Where-Object CompanyName -eq MariusStorhaug |
-              ForEach-Object -Parallel {
-                  Install-Module -Name $_.Name -Force -Verbose
-              }
-
-      - name: Bump version
-        run: |
-          .\scripts\Set-ModuleVersion.ps1 -ModuleName GitHub -Verbose
+          "GitHub.Core","GitHub" | Install-Module -Force
 
       - name: Publish module
         run: |
-          Publish-Module -Path 'src/GitHub' -NuGetApiKey "$env:APIKey" -Verbose
+          "GitHub.Core","GitHub" | foreach {
+              .\scripts\Set-ModuleVersion.ps1 -ModuleName $_ -Verbose
+              Publish-Module -Path 'src/$_' -NuGetApiKey "$env:APIKey" -Verbose
+          }

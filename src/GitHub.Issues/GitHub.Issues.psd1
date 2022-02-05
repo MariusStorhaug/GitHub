@@ -24,7 +24,7 @@
     Author            = 'Marius Storhaug'
 
     # Company or vendor of this module
-    CompanyName       = 'Unknown'
+    CompanyName       = 'Marius Storhaug'
 
     # Copyright statement for this module
     Copyright         = '(c) Marius Storhaug. All rights reserved.'
@@ -126,7 +126,7 @@
     # HelpInfoURI = ''
 
     # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
-    # DefaultCommandPrefix = ''
+    DefaultCommandPrefix = 'GitHub'
 
 }
 

@@ -12,19 +12,19 @@
     # RootModule = ''
 
     # Version number of this module.
-    ModuleVersion     = '0.0.1'
+    ModuleVersion = '0.0.1'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
 
     # ID used to uniquely identify this module
-    GUID              = 'e9425042-6212-4e2b-a902-69c10bb566ee'
+    GUID              = '6c7a8f93-1166-493b-b7fb-647c0dada71b'
 
     # Author of this module
     Author            = 'Marius Storhaug'
 
     # Company or vendor of this module
-    CompanyName       = 'Unknown'
+    CompanyName       = 'Marius Storhaug'
 
     # Copyright statement for this module
     Copyright         = '(c) Marius Storhaug. All rights reserved.'
@@ -72,13 +72,13 @@
     FunctionsToExport = @()
 
     # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-    CmdletsToExport   = @()
+    CmdletsToExport = @()
 
     # Variables to export from this module
     VariablesToExport = '*'
 
     # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-    AliasesToExport   = @()
+    AliasesToExport = @()
 
     # DSC resources to export from this module
     # DscResourcesToExport = @()
@@ -90,43 +90,43 @@
     # FileList = @()
 
     # Private data to pass to the module specified in RootModule/ModuleToProcess. This may also contain a PSData hashtable with additional module metadata used by PowerShell.
-    PrivateData       = @{
+    PrivateData = @{
 
         PSData = @{
 
             # Tags applied to this module. These help with module discovery in online galleries.
-            # Tags = @()
+            Tags                       = 'GitHub', 'PowerShell', 'pwsh'
 
             # A URL to the license for this module.
-            # LicenseUri = ''
+            LicenseUri                 = 'https://github.com/MariusStorhaug/GitHub/blob/main/LICENSE.md'
 
             # A URL to the main website for this project.
-            # ProjectUri = ''
+            ProjectUri                 = 'https://github.com/MariusStorhaug/GitHub'
 
             # A URL to an icon representing this module.
-            # IconUri = ''
+            IconUri                    = 'https://raw.githubusercontent.com/MariusStorhaug/GitHub/main/icons/GitHubPowerShellModule.png'
 
             # ReleaseNotes of this module
-            # ReleaseNotes = ''
+            ReleaseNotes               = ''
 
             # Prerelease string of this module
-            # Prerelease = ''
+            Prerelease                 = ''
 
             # Flag to indicate whether the module requires explicit user acceptance for install/update/save
-            # RequireLicenseAcceptance = $false
+            RequireLicenseAcceptance   = $false
 
             # External dependent modules of this module
-            # ExternalModuleDependencies = @()
+            ExternalModuleDependencies = @()
 
-        } # End of PSData hashtable
+        }
 
-    } # End of PrivateData hashtable
+    }
 
     # HelpInfo URI of this module
     # HelpInfoURI = ''
 
     # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
-    # DefaultCommandPrefix = ''
+    DefaultCommandPrefix = 'GitHub'
 
 }
 
