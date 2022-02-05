@@ -26,11 +26,11 @@ jobs:
 
       - name: Install chained modules
         run: |
-          Install-Module -Name "GitHub.Core","GitHub" -Force
+          Install-Module -Name "src/GitHub.Core","src/GitHub" -Force
 
       - name: Publish module
         run: |
           "GitHub.Core","GitHub" | foreach {
               .\scripts\Set-ModuleVersion.ps1 -ModuleName $_ -Verbose
-              Publish-Module -Path 'src/$_' -NuGetApiKey "$env:APIKey" -Verbose
+              Publish-Module -Path "src/$_" -NuGetApiKey "$env:APIKey" -Verbose
           }
