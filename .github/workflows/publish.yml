@@ -23,7 +23,7 @@ jobs:
       - name: Find changed modules
         run: |
           $Commit = 'HEAD'
-          $CompareCommit = 'HEAD^'
+          $CompareCommit = 'HEAD~'
           Write-Verbose "Gathering modified files between [$Commit] and [$CompareCommit]" -Verbose
           $Diff = git diff --name-only --diff-filter=AM $CompareCommit $Commit
           $ModifiedFiles = $Diff | Get-Item
