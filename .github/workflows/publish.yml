@@ -22,16 +22,8 @@ jobs:
 
       - name: Find changed modules
         run: |
-          $Commit = 'HEAD'
-          $CompareCommit = 'HEAD~'
-          Write-Verbose "Gathering modified files between [$Commit] and [$CompareCommit]" -Verbose
-          $Diff = git diff --name-only --diff-filter=AM $CompareCommit $Commit
-          $ModifiedFiles = $Diff | Get-Item
-          Write-Verbose 'The following files have been added or modified:' -Verbose
-          $ModifiedFiles | ForEach-Object {
-              Write-Verbose (' - [{0}]' -f $_.FullName) -Verbose
-          }
-
+          git diff --status-name
+          
       - name: Install chained modules
         run: |
           "GitHub.Core","GitHub" | Install-Module -Force
