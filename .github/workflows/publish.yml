@@ -23,6 +23,11 @@ jobs:
       - name: Install chained modules
         run: |
           Find-Module -Name GitHub* | Where-Object CompanyName -eq MariusStorhaug | Install-Module -Force
+          Find-Module -Name GitHub* |
+              Where-Object CompanyName -eq MariusStorhaug |
+              ForEach-Object -Parallel {
+                  Install-Module -Name $_.Name -Force -Verbose
+              }
 
       - name: Bump version
         run: |
