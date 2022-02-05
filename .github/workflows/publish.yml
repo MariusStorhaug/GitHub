@@ -17,10 +17,17 @@ jobs:
   publish:
     runs-on: 'ubuntu-latest'
     steps:
-      - uses: actions/checkout@v2
-      - run: |
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Install chained modules
+        run: |
           Find-Module -Name GitHub* | Where-Object CompanyName -eq MariusStorhaug | Install-Module -Force
-      - run: |
+
+      - name: Bump version
+        run: |
           .\scripts\Set-ModuleVersion.ps1 -ModuleName GitHub -Verbose
-      - run: |
+
+      - name: Publish module
+        run: |
           Publish-Module -Path 'src/GitHub' -NuGetApiKey "$env:APIKey" -Verbose
