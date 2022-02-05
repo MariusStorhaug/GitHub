@@ -22,8 +22,8 @@ jobs:
 
       - name: Find changed modules
         run: |
-          git diff --status-name
-          
+          git diff --name-status
+
       - name: Install chained modules
         run: |
           "GitHub.Core","GitHub" | Install-Module -Force
