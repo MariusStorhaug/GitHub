@@ -1,8 +1,14 @@
+[CmdletBinding()]
+param (
+    [Parameter()]
+    [string] $ModuleName = "GitHub"
+)
+
 [Version]$NewVersion = "0.0.0"
 
-$OnlineVersion = [Version](Find-Module WoWManager).Version
+$OnlineVersion = [Version](Find-Module $ModuleName).Version
 Write-Warning "Online: $($OnlineVersion.ToString())"
-$ManifestVersion = [Version](Test-ModuleManifest .\WoWManager\WoWManager.psd1).Version
+$ManifestVersion = [Version](Test-ModuleManifest ".\src\$ModuleName\$ModuleName.psd1").Version
 Write-Warning "Manifest: $($ManifestVersion.ToString())"
 
 if($ManifestVersion.Major -gt $OnlineVersion.Major) {
@@ -22,5 +28,4 @@ if($ManifestVersion.Major -gt $OnlineVersion.Major) {
 [Version]$NewVersion = [version]::new($NewVersionMajor,$NewVersionMinor,$NewVersionBuild)
 Write-Warning "NewVersion: $($NewVersion.ToString())"
 
-
-Update-ModuleManifest -Path .\WoWManager\WoWManager.psd1 -ModuleVersion $NewVersion -Verbose
+Update-ModuleManifest -Path ".\src\$ModuleName\$ModuleName.psd1" -ModuleVersion $NewVersion -ErrorAction Continue
