@@ -24,15 +24,10 @@ jobs:
         run: |
           git diff --name-status
 
-      - name: Add modules to path
-        run: |
-          $ModulePath = Get-Item -Path src
-          $env:PSModulePath += ";$($ModulePath.FullName)"
-          ($env:PSModulePath).Split(';')
-
       - name: Publish module
         run: |
           "GitHub.Core","GitHub" | foreach {
               .\scripts\Set-ModuleVersion.ps1 -ModuleName $_ -Verbose
               Publish-Module -Path "src/$_" -NuGetApiKey "$env:APIKey" -Verbose
+              Install-Module -Name "$_" -Force
           }
