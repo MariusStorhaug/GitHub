@@ -27,7 +27,8 @@ jobs:
       - name: Add modules to path
         run: |
           $ModulePath = Get-Item -Path src
-          $env:Path += ";$($ModulePath.FullName)"
+          $env:PSModulePath += ";$($ModulePath.FullName)"
+          ($env:PSModulePath).Split(';')
 
       - name: Publish module
         run: |
