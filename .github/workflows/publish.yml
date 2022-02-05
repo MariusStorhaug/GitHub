@@ -24,9 +24,10 @@ jobs:
         run: |
           git diff --name-status
 
-      - name: Install chained modules
+      - name: Add modules to path
         run: |
-          Import-Module -Name "src/GitHub.Core","src/GitHub" -Force
+          $ModulePath = Get-Item -Path src
+          $env:Path += ";$($ModulePath.FullName)"
 
       - name: Publish module
         run: |
