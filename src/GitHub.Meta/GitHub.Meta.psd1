@@ -56,11 +56,24 @@
     # load using RequiredVersion rather than ModuleVersion. When ModuleVersion is used it will load
     # the newest version available with a minimum of the version specified. You can combine strings
     # and hash tables in the parameter value.
-    # Example: RequiredModules = @("MyModule", @{ModuleName = "MyDependentModule"; ModuleVersion = "2.0"; GUID = "cfc45206-1e49-459d-a8ad-5b571ef94857" })
-    # Example: RequiredModules = @('MyModule', @{ModuleName = 'MyDependentModule'; RequiredVersion = '1.5'; GUID = 'cfc45206-1e49-459d-a8ad-5b571ef94857' })
+    # Example:
+    # RequiredModules = @(
+    #     "MyModule",
+    #     'MyModule2',
+    #     @{
+    #         ModuleName = "MyDependentModule"
+    #         ModuleVersion = "2.0"
+    #         GUID = "cfc45206-1e49-459d-a8ad-5b571ef94857"
+    #     },
+    #     @{
+    #         ModuleName = 'MyDependentModule'
+    #         RequiredVersion = '1.5'
+    #         GUID = 'cfc45206-1e49-459d-a8ad-5b571ef94857'
+    #     }
+    # )
     RequiredModules = @(
         @{
-            ModuleName = 'GitHub.Core',
+            ModuleName = 'GitHub.Core'
             ModuleVersion = '0.0.1'
         }
     )
