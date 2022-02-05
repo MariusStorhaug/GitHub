@@ -1,67 +1,7 @@
-﻿# API Authorization
-# https://docs.github.com/en/rest/overview/other-authentication-methods
-
+﻿# GitHub
 
 # https://docs.github.com/en/rest/overview/resources-in-the-rest-api
 # https://docs.github.com/en/rest/reference
-
-<#
-.SYNOPSIS
-Short description
-
-.DESCRIPTION
-Long description
-
-.PARAMETER Token
-Parameter description
-
-.EXAMPLE
-An example
-
-.NOTES
-https://docs.github.com/en/rest/reference/meta#github-api-root
-#>
-function Get-GitHubRoot {
-    [CmdletBinding()]
-    param (
-        $Token = $script:Token
-    )
-
-    Invoke-GitHubAPI -Token $Token
-
-    return $Response
-}
-
-
-function Get-GitHubRepo {
-    [CmdletBinding()]
-    param (
-        $Owner = $script:Owner,
-        $Repo = $script:Repo,
-        $Token = $script:Token
-    )
-
-    # API Reference
-    # https://docs.github.com/en/rest/reference/repos#get-a-repository
-    $APICall = @{
-        Uri     = "$APIBaseURI/repos/$Owner/$Repo"
-        Headers = @{
-            Authorization  = "token $Token"
-            'Content-Type' = 'application/json'
-        }
-        Method  = 'GET'
-        Body    = @{} | ConvertTo-Json -Depth 100
-    }
-    try {
-        if ($PSBoundParameters.ContainsKey('Verbose')) {
-            $APICall
-        }
-        $Response = Invoke-RestMethod @APICall
-    } catch {
-        throw $_
-    }
-    return $Response
-}
 
 function Get-GitHubRepoTeams {
     [CmdletBinding()]
@@ -93,34 +33,50 @@ function Get-GitHubRepoTeams {
     return $Response
 }
 
-function Get-GitHubEmojis {
+function Get-GitHubRepoBranch {
     [CmdletBinding()]
     param (
+        $Owner = $script:Owner,
+        $Repo = $script:Repo,
         $Token = $script:Token
     )
 
-    # API Reference
-    # https://docs.github.com/en/rest/reference/emojis#get-emojis
-    $APICall = @{
-        Uri     = "$APIBaseURI/emojis"
-        Headers = @{
-            Authorization  = "token $Token"
-            'Content-Type' = 'application/json'
-        }
-        Method  = 'GET'
-        Body    = @{} | ConvertTo-Json -Depth 100
-    }
-    try {
-        if ($PSBoundParameters.ContainsKey('Verbose')) {
-            $APICall
-        }
-        $Response = Invoke-RestMethod @APICall
-    } catch {
-        throw $_
-    }
+    $Response = Invoke-GitHubAPI -Method Get -APIEndpoint repos/$owner/$repo/branches
+
     return $Response
 }
 
+<#
+.SYNOPSIS
+Short description
+
+.DESCRIPTION
+Long description
+
+.PARAMETER Owner
+Parameter description
+
+.PARAMETER Repo
+Parameter description
+
+.PARAMETER Token
+Parameter description
+
+.PARAMETER Name
+Parameter description
+
+.PARAMETER ID
+Parameter description
+
+.PARAMETER PageSize
+Parameter description
+
+.EXAMPLE
+An example
+
+.NOTES
+https://docs.github.com/en/rest/reference/actions#list-repository-workflows
+#>
 Function Get-GitHubWorkflow {
     [CmdletBinding(
         DefaultParameterSetName = 'ByName'
@@ -137,34 +93,16 @@ Function Get-GitHubWorkflow {
             ParameterSetName = 'ByID'
         )]
         [string] $ID,
-        [int] $PageSize = 100
+        [int] $PageSize = 30
     )
 
-    # API Reference
-    # https://docs.github.com/en/rest/reference/actions#list-repository-workflows
     $processedPages = 0
     $workflows = @()
     do {
         $processedPages += 1
-        $APICall = @{
-            Uri     = "$APIBaseURI/repos/$Owner/$Repo/actions/workflows?per_page=$PageSize&page=$processedPages"
-            Headers = @{
-                Authorization  = "token $Token"
-                'Content-Type' = 'application/json'
-            }
-            Method  = 'GET'
-            Body    = @{} | ConvertTo-Json -Depth 100
-        }
-        try {
-            if ($PSBoundParameters.ContainsKey('Verbose')) {
-                $APICall
-            }
-            $Response = Invoke-RestMethod @APICall
-        } catch {
-            throw $_
-        }
+        $Response = Invoke-GitHubAPI -Method GET -APIEndpoint "repos/$Owner/$Repo/actions/workflows?per_page=$PageSize&page=$processedPages"
         $workflows += $Response.workflows | Where-Object name -Match $name | Where-Object id -Match $id
-    } while ($Response.total_count -eq 100)
+    } while ($workflows.count -ne $Response.total_count)
 
     return $workflows
 }
@@ -400,7 +338,7 @@ function Stop-GitHubWorkflowRun {
     end {}
 }
 
-function Start-GitHubWorkflowRun {
+function Start-GitHubWorkflowReRun {
     [CmdletBinding()]
     param (
         $Owner = $script:Owner,

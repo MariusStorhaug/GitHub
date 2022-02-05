@@ -16,7 +16,7 @@
     ModuleVersion        = '0.0.1'
 
     # Supported PSEditions
-    # CompatiblePSEditions = @()
+    CompatiblePSEditions = 'Core'
 
     # ID used to uniquely identify this module
     GUID                 = '6ba4720b-1b0b-4c26-96b4-45977c885d11'
@@ -58,12 +58,48 @@
     # the newest version available with a minimum of the version specified. You can combine strings
     # and hash tables in the parameter value.
     # Example: RequiredModules = @("MyModule", @{ModuleName = "MyDependentModule"; ModuleVersion = "2.0"; GUID = "cfc45206-1e49-459d-a8ad-5b571ef94857" })
-    # Example: RequiredModules = @('MyModule', @{ModuleName = 'MyDependentModule'; RequiredVersion = '1.5'; GUID = 'cfc45206-1e49-459d-a8ad-5b571ef94857' })
+    # Example: RequiredModules = @('MyModule', @{ModuleName = 'MyDependentModule'; RequiredVersion = '1.5'; GUID = 'cfc45206-1e49-459d-a8ad-5b571ef94857' }).
     RequiredModules      = @(
-        @{
-            ModuleName    = 'GitHub.Core'
-            ModuleVersion = '0.0.1'
-        }
+        'GitHub.Actions',
+        'GitHub.Activity',
+        'GitHub.Apps',
+        'GitHub.Billing',
+        'GitHub.Branches',
+        'GitHub.Checks',
+        'GitHub.CodeScanning',
+        'GitHub.CodesOfConduct',
+        'GitHub.Codespaces',
+        'GitHub.Collaborators',
+        'GitHub.Commits',
+        'GitHub.Core',
+        'GitHub.Dependabot',
+        'GitHub.Deployments',
+        'GitHub.Emojis',
+        'GitHub.EnterpriseAdmin',
+        'GitHub.Gists',
+        'GitHub.Git',
+        'GitHub.GitIgnore',
+        'GitHub.Interactions',
+        'GitHub.Issues',
+        'GitHub.Licenses',
+        'GitHub.Markdown',
+        'GitHub.Meta',
+        'GitHub.Migrations',
+        'GitHub.OAuthAuthorizations',
+        'GitHub.Orgs',
+        'GitHub.Packages',
+        'GitHub.Projects',
+        'GitHub.Pulls',
+        'GitHub.RateLimit',
+        'GitHub.Reactions',
+        'GitHub.Repos',
+        'GitHub.SCIM'
+        'GitHub.Search'
+        'GitHub.SecretScanning'
+        'GitHub.ServerStatistics'
+        'GitHub.Teams'
+        'GitHub.Users'
+        'GitHub.Webhooks'
     )
 
     # Assemblies that must be loaded prior to importing this module
@@ -142,4 +178,3 @@
     # DefaultCommandPrefix = 'GitHub'
 
 }
-
