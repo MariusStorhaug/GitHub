@@ -26,7 +26,7 @@ jobs:
 
       - name: Install chained modules
         run: |
-          Install-Module -Name "src/GitHub.Core","src/GitHub" -Force
+          Import-Module -Name "src/GitHub.Core","src/GitHub" -Force
 
       - name: Publish module
         run: |
