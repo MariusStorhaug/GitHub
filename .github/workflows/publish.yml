@@ -3,7 +3,7 @@ name: Publish Module
 on:
   push:
     paths:
-    - src/GitHub/**
+    - src/GitHub*/**
     - .github/workflows/publish.yml
 
 defaults:
