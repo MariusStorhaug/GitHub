@@ -9,7 +9,7 @@
 @{
 
     # Script module or binary module file associated with this manifest.
-    # RootModule = ''
+    RootModule        = 'GitHub.Meta.psm1'
 
     # Version number of this module.
     ModuleVersion     = '0.0.1'
@@ -50,8 +50,17 @@
     # Processor architecture (None, X86, Amd64) required by this module
     # ProcessorArchitecture = ''
 
-    # Modules that must be imported into the global environment prior to importing this module
-    # RequiredModules = @()
+    # Modules that must be imported into the global environment prior to importing this module.
+    # This loads any modules listed unless they've already been loaded. For example, some modules
+    # may already be loaded by a different module. It's possible to specify a specific version to
+    # load using RequiredVersion rather than ModuleVersion. When ModuleVersion is used it will load
+    # the newest version available with a minimum of the version specified. You can combine strings
+    # and hash tables in the parameter value.
+    # Example: RequiredModules = @("MyModule", @{ModuleName = "MyDependentModule"; ModuleVersion = "2.0"; GUID = "cfc45206-1e49-459d-a8ad-5b571ef94857" })
+    # Example: RequiredModules = @('MyModule', @{ModuleName = 'MyDependentModule'; RequiredVersion = '1.5'; GUID = 'cfc45206-1e49-459d-a8ad-5b571ef94857' })
+    RequiredModules   = @(
+        'GitHub.Core'
+    )
 
     # Assemblies that must be loaded prior to importing this module
     # RequiredAssemblies = @()
@@ -69,7 +78,9 @@
     # NestedModules = @()
 
     # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-    FunctionsToExport = @()
+    FunctionsToExport = @(
+        'Get-GitHubRoot'
+    )
 
     # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
     CmdletsToExport   = @()
@@ -95,25 +106,25 @@
         PSData = @{
 
             # Tags applied to this module. These help with module discovery in online galleries.
-            Tags       = 'GitHub', 'PowerShell', 'pwsh'
+            Tags                       = 'GitHub', 'PowerShell', 'pwsh'
 
             # A URL to the license for this module.
-            LicenseUri = 'https://github.com/MariusStorhaug/GitHub/blob/main/LICENSE.md'
+            LicenseUri                 = 'https://github.com/MariusStorhaug/GitHub/blob/main/LICENSE.md'
 
             # A URL to the main website for this project.
-            ProjectUri = 'https://github.com/MariusStorhaug/GitHub'
+            ProjectUri                 = 'https://github.com/MariusStorhaug/GitHub'
 
             # A URL to an icon representing this module.
-            IconUri = 'https://raw.githubusercontent.com/MariusStorhaug/GitHub/main/icons/GitHubPowerShellModule.png'
+            IconUri                    = 'https://raw.githubusercontent.com/MariusStorhaug/GitHub/main/icons/GitHubPowerShellModule.png'
 
             # ReleaseNotes of this module
-            ReleaseNotes = ''
+            ReleaseNotes               = ''
 
             # Prerelease string of this module
-            Prerelease = ''
+            Prerelease                 = ''
 
             # Flag to indicate whether the module requires explicit user acceptance for install/update/save
-            RequireLicenseAcceptance = $false
+            RequireLicenseAcceptance   = $false
 
             # External dependent modules of this module
             ExternalModuleDependencies = @()
