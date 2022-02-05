@@ -12,10 +12,10 @@
     # RootModule = ''
 
     # Version number of this module.
-    ModuleVersion = '0.0.1'
+    ModuleVersion     = '0.0.1'
 
     # Supported PSEditions
-    # CompatiblePSEditions = @()
+    CompatiblePSEditions = 'Core'
 
     # ID used to uniquely identify this module
     GUID              = '88edc5e0-c643-475e-be6f-e6e1d98eaa1f'
@@ -50,8 +50,15 @@
     # Processor architecture (None, X86, Amd64) required by this module
     # ProcessorArchitecture = ''
 
-    # Modules that must be imported into the global environment prior to importing this module
-    # RequiredModules = @()
+    # Modules that must be imported into the global environment prior to importing this module.
+    # This loads any modules listed unless they've already been loaded. For example, some modules
+    # may already be loaded by a different module. It's possible to specify a specific version to
+    # load using RequiredVersion rather than ModuleVersion. When ModuleVersion is used it will load
+    # the newest version available with a minimum of the version specified. You can combine strings
+    # and hash tables in the parameter value.
+    # Example: RequiredModules = @("MyModule", @{ModuleName = "MyDependentModule"; ModuleVersion = "2.0"; GUID = "cfc45206-1e49-459d-a8ad-5b571ef94857" })
+    # Example: RequiredModules = @('MyModule', @{ModuleName = 'MyDependentModule'; RequiredVersion = '1.5'; GUID = 'cfc45206-1e49-459d-a8ad-5b571ef94857' })
+    RequiredModules   = @()
 
     # Assemblies that must be loaded prior to importing this module
     # RequiredAssemblies = @()
@@ -72,13 +79,13 @@
     FunctionsToExport = @()
 
     # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-    CmdletsToExport = @()
+    CmdletsToExport   = @()
 
     # Variables to export from this module
     VariablesToExport = '*'
 
     # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-    AliasesToExport = @()
+    AliasesToExport   = @()
 
     # DSC resources to export from this module
     # DscResourcesToExport = @()
@@ -90,7 +97,7 @@
     # FileList = @()
 
     # Private data to pass to the module specified in RootModule/ModuleToProcess. This may also contain a PSData hashtable with additional module metadata used by PowerShell.
-    PrivateData = @{
+    PrivateData       = @{
 
         PSData = @{
 
