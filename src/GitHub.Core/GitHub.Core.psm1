@@ -28,7 +28,7 @@ function Invoke-GitHubAPI {
         [string] $Token = $script:Token
     )
     $APICall = @{
-        Uri     = "$script:APIBaseURI/$APIEndpoint"
+        Uri     = ("$script:APIBaseURI/$APIEndpoint").Replace('\', '/').Replace('//', '/')
         Headers = @{
             Authorization  = "token $Token"
             'Content-Type' = 'application/vnd.github.v3+json' #'application/json'
@@ -44,6 +44,32 @@ function Invoke-GitHubAPI {
     return $Response
 }
 
+
+<#
+.SYNOPSIS
+Short description
+
+.DESCRIPTION
+Long description
+
+.PARAMETER Owner
+Parameter description
+
+.PARAMETER Repo
+Parameter description
+
+.PARAMETER Token
+Parameter description
+
+.PARAMETER APIBaseURI
+Parameter description
+
+.EXAMPLE
+An example
+
+.NOTES
+https://docs.github.com/en/rest/overview/other-authentication-methods#authenticating-for-saml-sso
+#>
 function Connect-GitHubAccount {
     [CmdletBinding()]
     param (
