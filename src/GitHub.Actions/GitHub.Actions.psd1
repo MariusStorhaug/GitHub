@@ -33,7 +33,7 @@
     Description       = 'PowerShell Module for GitHub.Actions'
 
     # Minimum version of the PowerShell engine required by this module
-    # PowerShellVersion = ''
+    PowerShellVersion = '7.1'
 
     # Name of the PowerShell host required by this module
     # PowerShellHostName = ''
