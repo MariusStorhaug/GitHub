@@ -24,8 +24,8 @@ jobs:
       - name: Publish module
         run: |
           $Info = Invoke-Expression (Get-Content .\src\$env:ModuleName\$env:ModuleName.psd1 -Raw)
-          $Info.RequiredModules | % {
-            Install-Module -Name $_.ModuleName -Force -Verbose
+          foreach ($Module in $Info.RequiredModules) {
+            Install-Module -Name $Module -Force -Verbose
           }
 
           .\scripts\Set-ModuleVersion.ps1 -ModuleName $env:ModuleName -Verbose
