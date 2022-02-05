@@ -15,7 +15,7 @@
     ModuleVersion     = '0.0.1'
 
     # Supported PSEditions
-    # CompatiblePSEditions = @()
+    CompatiblePSEditions = 'Core'
 
     # ID used to uniquely identify this module
     GUID              = '01354ab7-950f-4098-870b-ec0111b82460'
@@ -33,7 +33,7 @@
     Description       = 'PowerShell Module for GitHub.Billing'
 
     # Minimum version of the PowerShell engine required by this module
-    # PowerShellVersion = ''
+    PowerShellVersion = '7.1'
 
     # Name of the PowerShell host required by this module
     # PowerShellHostName = ''
@@ -50,8 +50,15 @@
     # Processor architecture (None, X86, Amd64) required by this module
     # ProcessorArchitecture = ''
 
-    # Modules that must be imported into the global environment prior to importing this module
-    # RequiredModules = @()
+    # Modules that must be imported into the global environment prior to importing this module.
+    # This loads any modules listed unless they've already been loaded. For example, some modules
+    # may already be loaded by a different module. It's possible to specify a specific version to
+    # load using RequiredVersion rather than ModuleVersion. When ModuleVersion is used it will load
+    # the newest version available with a minimum of the version specified. You can combine strings
+    # and hash tables in the parameter value.
+    # Example: RequiredModules = @("MyModule", @{ModuleName = "MyDependentModule"; ModuleVersion = "2.0"; GUID = "cfc45206-1e49-459d-a8ad-5b571ef94857" })
+    # Example: RequiredModules = @('MyModule', @{ModuleName = 'MyDependentModule'; RequiredVersion = '1.5'; GUID = 'cfc45206-1e49-459d-a8ad-5b571ef94857' })
+    RequiredModules = @()
 
     # Assemblies that must be loaded prior to importing this module
     # RequiredAssemblies = @()
