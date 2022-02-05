@@ -5,6 +5,7 @@ on:
     paths:
     - src/GitHub.Billing/**
     - .github/workflows/Publish.GitHub.Billing.yml
+  workflow_dispatch:
 
 defaults:
   run:

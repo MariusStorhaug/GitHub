@@ -5,6 +5,7 @@ on:
     paths:
     - src/GitHub.Dependabot/**
     - .github/workflows/Publish.GitHub.Dependabot.yml
+  workflow_dispatch:
 
 defaults:
   run:

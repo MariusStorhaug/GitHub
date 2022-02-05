@@ -5,6 +5,7 @@ on:
     paths:
     - src/GitHub.ServerStatistics/**
     - .github/workflows/Publish.GitHub.ServerStatistics.yml
+  workflow_dispatch:
 
 defaults:
   run:

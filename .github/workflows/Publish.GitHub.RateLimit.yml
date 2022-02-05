@@ -5,6 +5,7 @@ on:
     paths:
     - src/GitHub.RateLimit/**
     - .github/workflows/Publish.GitHub.RateLimit.yml
+  workflow_dispatch:
 
 defaults:
   run:

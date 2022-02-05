@@ -5,6 +5,7 @@ on:
     paths:
     - src/GitHub.Collaborators/**
     - .github/workflows/Publish.GitHub.Collaborators.yml
+  workflow_dispatch:
 
 defaults:
   run:

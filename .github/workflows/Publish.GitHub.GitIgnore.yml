@@ -5,6 +5,7 @@ on:
     paths:
     - src/GitHub.GitIgnore/**
     - .github/workflows/Publish.GitHub.GitIgnore.yml
+  workflow_dispatch:
 
 defaults:
   run:

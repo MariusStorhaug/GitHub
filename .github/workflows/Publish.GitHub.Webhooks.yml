@@ -5,6 +5,7 @@ on:
     paths:
     - src/GitHub.Webhooks/**
     - .github/workflows/Publish.GitHub.Webhooks.yml
+  workflow_dispatch:
 
 defaults:
   run:

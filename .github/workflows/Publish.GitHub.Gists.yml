@@ -5,6 +5,7 @@ on:
     paths:
     - src/GitHub.Gists/**
     - .github/workflows/Publish.GitHub.Gists.yml
+  workflow_dispatch:
 
 defaults:
   run:

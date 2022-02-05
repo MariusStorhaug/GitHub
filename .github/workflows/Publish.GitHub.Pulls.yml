@@ -5,6 +5,7 @@ on:
     paths:
     - src/GitHub.Pulls/**
     - .github/workflows/Publish.GitHub.Pulls.yml
+  workflow_dispatch:
 
 defaults:
   run:

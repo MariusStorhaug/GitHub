@@ -5,6 +5,7 @@ on:
     paths:
     - src/GitHub.Meta/**
     - .github/workflows/Publish.GitHub.Meta.yml
+  workflow_dispatch:
 
 defaults:
   run:

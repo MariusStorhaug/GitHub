@@ -5,6 +5,7 @@ on:
     paths:
     - src/GitHub.Commits/**
     - .github/workflows/Publish.GitHub.Commits.yml
+  workflow_dispatch:
 
 defaults:
   run:

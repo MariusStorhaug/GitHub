@@ -5,6 +5,7 @@ on:
     paths:
     - src/GitHub.Branches/**
     - .github/workflows/Publish.GitHub.Branches.yml
+  workflow_dispatch:
 
 defaults:
   run:

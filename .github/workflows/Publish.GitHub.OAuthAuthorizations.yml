@@ -5,6 +5,7 @@ on:
     paths:
     - src/GitHub.OAuthAuthorizations/**
     - .github/workflows/Publish.GitHub.OAuthAuthorizations.yml
+  workflow_dispatch:
 
 defaults:
   run:

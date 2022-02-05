@@ -5,6 +5,7 @@ on:
     paths:
     - src/GitHub.Reactions/**
     - .github/workflows/Publish.GitHub.Reactions.yml
+  workflow_dispatch:
 
 defaults:
   run:

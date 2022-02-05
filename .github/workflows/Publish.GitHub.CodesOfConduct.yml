@@ -5,6 +5,7 @@ on:
     paths:
     - src/GitHub.CodesOfConduct/**
     - .github/workflows/Publish.GitHub.CodesOfConduct.yml
+  workflow_dispatch:
 
 defaults:
   run:

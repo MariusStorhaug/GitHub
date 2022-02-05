@@ -5,6 +5,7 @@ on:
     paths:
     - src/GitHub.Licenses/**
     - .github/workflows/Publish.GitHub.Licenses.yml
+  workflow_dispatch:
 
 defaults:
   run:

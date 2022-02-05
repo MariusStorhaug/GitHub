@@ -5,6 +5,7 @@ on:
     paths:
     - src/GitHub.Teams/**
     - .github/workflows/Publish.GitHub.Teams.yml
+  workflow_dispatch:
 
 defaults:
   run:

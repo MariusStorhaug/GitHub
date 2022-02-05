@@ -5,6 +5,7 @@ on:
     paths:
     - src/GitHub.Markdown/**
     - .github/workflows/Publish.GitHub.Markdown.yml
+  workflow_dispatch:
 
 defaults:
   run:

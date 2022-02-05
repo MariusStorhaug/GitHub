@@ -5,6 +5,7 @@ on:
     paths:
     - src/GitHub.SCIM/**
     - .github/workflows/Publish.GitHub.SCIM.yml
+  workflow_dispatch:
 
 defaults:
   run:

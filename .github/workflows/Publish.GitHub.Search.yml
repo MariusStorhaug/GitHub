@@ -5,6 +5,7 @@ on:
     paths:
     - src/GitHub.Search/**
     - .github/workflows/Publish.GitHub.Search.yml
+  workflow_dispatch:
 
 defaults:
   run:

@@ -5,6 +5,7 @@ on:
     paths:
     - src/GitHub.Checks/**
     - .github/workflows/Publish.GitHub.Checks.yml
+  workflow_dispatch:
 
 defaults:
   run:

@@ -5,6 +5,7 @@ on:
     paths:
     - src/GitHub.Migrations/**
     - .github/workflows/Publish.GitHub.Migrations.yml
+  workflow_dispatch:
 
 defaults:
   run:

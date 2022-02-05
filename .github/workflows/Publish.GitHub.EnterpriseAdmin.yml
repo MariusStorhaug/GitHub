@@ -5,6 +5,7 @@ on:
     paths:
     - src/GitHub.EnterpriseAdmin/**
     - .github/workflows/Publish.GitHub.EnterpriseAdmin.yml
+  workflow_dispatch:
 
 defaults:
   run:

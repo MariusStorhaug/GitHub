@@ -5,6 +5,7 @@ on:
     paths:
     - src/GitHub.Activity/**
     - .github/workflows/Publish.GitHub.Activity.yml
+  workflow_dispatch:
 
 defaults:
   run:

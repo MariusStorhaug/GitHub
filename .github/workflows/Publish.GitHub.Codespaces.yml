@@ -5,6 +5,7 @@ on:
     paths:
     - src/GitHub.Codespaces/**
     - .github/workflows/Publish.GitHub.Codespaces.yml
+  workflow_dispatch:
 
 defaults:
   run:

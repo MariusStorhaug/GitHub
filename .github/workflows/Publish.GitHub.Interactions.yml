@@ -5,6 +5,7 @@ on:
     paths:
     - src/GitHub.Interactions/**
     - .github/workflows/Publish.GitHub.Interactions.yml
+  workflow_dispatch:
 
 defaults:
   run:

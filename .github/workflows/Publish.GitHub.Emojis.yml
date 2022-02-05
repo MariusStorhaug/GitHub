@@ -5,6 +5,7 @@ on:
     paths:
     - src/GitHub.Emojis/**
     - .github/workflows/Publish.GitHub.Emojis.yml
+  workflow_dispatch:
 
 defaults:
   run:

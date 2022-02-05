@@ -5,6 +5,7 @@ on:
     paths:
     - src/GitHub.CodeScanning/**
     - .github/workflows/Publish.GitHub.CodeScanning.yml
+  workflow_dispatch:
 
 defaults:
   run:
