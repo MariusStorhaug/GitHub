@@ -19,8 +19,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: |
-        Find-Module -Name GitHub* | Where-Object CompanyName -eq MariusStorhaug | Install-Module -Force
+          Find-Module -Name GitHub* | Where-Object CompanyName -eq MariusStorhaug | Install-Module -Force
       - run: |
-        .\scripts\Set-ModuleVersion.ps1 -ModuleName GitHub -Verbose
+          .\scripts\Set-ModuleVersion.ps1 -ModuleName GitHub -Verbose
       - run: |
-        Publish-Module -Path 'src/GitHub' -NuGetApiKey "$env:APIKey" -Verbose
+          Publish-Module -Path 'src/GitHub' -NuGetApiKey "$env:APIKey" -Verbose
