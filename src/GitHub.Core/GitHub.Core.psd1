@@ -9,7 +9,7 @@
 @{
 
     # Script module or binary module file associated with this manifest.
-    # RootModule = ''
+    RootModule        = 'GitHub.Core.psm1'
 
     # Version number of this module.
     ModuleVersion     = '0.0.1'
@@ -101,25 +101,25 @@
         PSData = @{
 
             # Tags applied to this module. These help with module discovery in online galleries.
-            Tags       = 'GitHub', 'PowerShell', 'pwsh'
+            Tags                       = 'GitHub', 'PowerShell', 'pwsh'
 
             # A URL to the license for this module.
-            LicenseUri = 'https://github.com/MariusStorhaug/GitHub/blob/main/LICENSE.md'
+            LicenseUri                 = 'https://github.com/MariusStorhaug/GitHub/blob/main/LICENSE.md'
 
             # A URL to the main website for this project.
-            ProjectUri = 'https://github.com/MariusStorhaug/GitHub'
+            ProjectUri                 = 'https://github.com/MariusStorhaug/GitHub'
 
             # A URL to an icon representing this module.
-            IconUri = 'https://raw.githubusercontent.com/MariusStorhaug/GitHub/main/icons/GitHubPowerShellModule.png'
+            IconUri                    = 'https://raw.githubusercontent.com/MariusStorhaug/GitHub/main/icons/GitHubPowerShellModule.png'
 
             # ReleaseNotes of this module
-            ReleaseNotes = ''
+            ReleaseNotes               = ''
 
             # Prerelease string of this module
-            Prerelease = ''
+            Prerelease                 = ''
 
             # Flag to indicate whether the module requires explicit user acceptance for install/update/save
-            RequireLicenseAcceptance = $false
+            RequireLicenseAcceptance   = $false
 
             # External dependent modules of this module
             ExternalModuleDependencies = @()
