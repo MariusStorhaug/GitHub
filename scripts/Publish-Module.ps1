@@ -7,17 +7,9 @@ param (
     [string] $APIKey
 )
 
-# $Info = Invoke-Expression (Get-Content .\src\$ModuleName\$ModuleName.psd1 -Raw)
-# foreach ($Module in $Info.RequiredModules) {
-#     Write-Verbose "Install module: $($Module.ModuleName)"
-#     try {
-#         Install-Module -Name $Module.ModuleName -Force -Verbose
-#     } catch {
-#         Write-Warning 'Unable to install required module.'
-#         Write-Warning $_.Exception.Message
-#     }
-# }
+$SRCPath = Get-Item -Path .\src\ | Select-Object -ExpandProperty FullName
+$env:PSModulePath += ":$SRCPath"
+$env:PSModulePath -Split ':'
 
 .\scripts\Set-ModuleVersion.ps1 -ModuleName $ModuleName -Verbose
 Publish-Module -Path "src/$ModuleName" -NuGetApiKey $APIKey -Verbose
-
