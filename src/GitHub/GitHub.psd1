@@ -71,44 +71,155 @@
         @{
             ModuleName    = 'GitHub.Apps'
             ModuleVersion = '0.0'
+        },
+        @{
+            ModuleName    = 'GitHub.Billing'
+            ModuleVersion = '0.0'
+        },
+        @{
+            ModuleName    = 'GitHub.Branches'
+            ModuleVersion = '0.0'
+        },
+        @{
+            ModuleName    = 'GitHub.Checks'
+            ModuleVersion = '0.0'
+        },
+        @{
+            ModuleName    = 'GitHub.CodeScanning'
+            ModuleVersion = '0.0'
+        },
+        @{
+            ModuleName    = 'GitHub.CodesOfConduct'
+            ModuleVersion = '0.0'
+        },
+        @{
+            ModuleName    = 'GitHub.Codespaces'
+            ModuleVersion = '0.0'
+        },
+        @{
+            ModuleName    = 'GitHub.Collaborators'
+            ModuleVersion = '0.0'
+        },
+        @{
+            ModuleName    = 'GitHub.Commits'
+            ModuleVersion = '0.0'
+        },
+        @{
+            ModuleName    = 'GitHub.Core'
+            ModuleVersion = '0.0'
+        },
+        @{
+            ModuleName    = 'GitHub.Dependabot'
+            ModuleVersion = '0.0'
+        },
+        @{
+            ModuleName    = 'GitHub.Deployments'
+            ModuleVersion = '0.0'
+        },
+        @{
+            ModuleName    = 'GitHub.Emojis'
+            ModuleVersion = '0.0'
+        },
+        @{
+            ModuleName    = 'GitHub.EnterpriseAdmin'
+            ModuleVersion = '0.0'
+        },
+        @{
+            ModuleName    = 'GitHub.Gists'
+            ModuleVersion = '0.0'
+        },
+        @{
+            ModuleName    = 'GitHub.Git'
+            ModuleVersion = '0.0'
+        },
+        @{
+            ModuleName    = 'GitHub.GitIgnore'
+            ModuleVersion = '0.0'
+        },
+        @{
+            ModuleName    = 'GitHub.Interactions'
+            ModuleVersion = '0.0'
+        },
+        @{
+            ModuleName    = 'GitHub.Issues'
+            ModuleVersion = '0.0'
+        },
+        @{
+            ModuleName    = 'GitHub.Licenses'
+            ModuleVersion = '0.0'
+        },
+        @{
+            ModuleName    = 'GitHub.Markdown'
+            ModuleVersion = '0.0'
+        },
+        @{
+            ModuleName    = 'GitHub.Meta'
+            ModuleVersion = '0.0'
+        },
+        @{
+            ModuleName    = 'GitHub.Migrations'
+            ModuleVersion = '0.0'
+        },
+        @{
+            ModuleName    = 'GitHub.OAuthAuthorizations'
+            ModuleVersion = '0.0'
+        },
+        @{
+            ModuleName    = 'GitHub.Orgs'
+            ModuleVersion = '0.0'
+        },
+        @{
+            ModuleName    = 'GitHub.Packages'
+            ModuleVersion = '0.0'
+        },
+        @{
+            ModuleName    = 'GitHub.Projects'
+            ModuleVersion = '0.0'
+        },
+        @{
+            ModuleName    = 'GitHub.Pulls'
+            ModuleVersion = '0.0'
+        },
+        @{
+            ModuleName    = 'GitHub.RateLimit'
+            ModuleVersion = '0.0'
+        },
+        @{
+            ModuleName    = 'GitHub.Reactions'
+            ModuleVersion = '0.0'
+        },
+        @{
+            ModuleName    = 'GitHub.Repos'
+            ModuleVersion = '0.0'
+        },
+        @{
+            ModuleName    = 'GitHub.SCIM'
+            ModuleVersion = '0.0'
+        },
+        @{
+            ModuleName    = 'GitHub.Search'
+            ModuleVersion = '0.0'
+        },
+        @{
+            ModuleName    = 'GitHub.SecretScanning'
+            ModuleVersion = '0.0'
+        },
+        @{
+            ModuleName    = 'GitHub.ServerStatistics'
+            ModuleVersion = '0.0'
+        },
+        @{
+            ModuleName    = 'GitHub.Teams'
+            ModuleVersion = '0.0'
+        },
+        @{
+            ModuleName    = 'GitHub.Users'
+            ModuleVersion = '0.0'
+        },
+        @{
+            ModuleName    = 'GitHub.Webhooks'
+            ModuleVersion = '0.0'
         }
-        # 'GitHub.Billing',
-        # 'GitHub.Branches',
-        # 'GitHub.Checks',
-        # 'GitHub.CodeScanning',
-        # 'GitHub.CodesOfConduct',
-        # 'GitHub.Codespaces',
-        # 'GitHub.Collaborators',
-        # 'GitHub.Commits',
-        # 'GitHub.Core',
-        # 'GitHub.Dependabot',
-        # 'GitHub.Deployments',
-        # 'GitHub.Emojis',
-        # 'GitHub.EnterpriseAdmin',
-        # 'GitHub.Gists',
-        # 'GitHub.Git',
-        # 'GitHub.GitIgnore',
-        # 'GitHub.Interactions',
-        # 'GitHub.Issues',
-        # 'GitHub.Licenses',
-        # 'GitHub.Markdown',
-        # 'GitHub.Meta',
-        # 'GitHub.Migrations',
-        # 'GitHub.OAuthAuthorizations',
-        # 'GitHub.Orgs',
-        # 'GitHub.Packages',
-        # 'GitHub.Projects',
-        # 'GitHub.Pulls',
-        # 'GitHub.RateLimit',
-        # 'GitHub.Reactions',
-        # 'GitHub.Repos',
-        # 'GitHub.SCIM'
-        # 'GitHub.Search'
-        # 'GitHub.SecretScanning'
-        # 'GitHub.ServerStatistics'
-        # 'GitHub.Teams'
-        # 'GitHub.Users'
-        # 'GitHub.Webhooks'
     )
 
     # Assemblies that must be loaded prior to importing this module
