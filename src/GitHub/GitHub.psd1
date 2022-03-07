@@ -60,7 +60,9 @@
     # Example: RequiredModules = @("MyModule", @{ModuleName = "MyDependentModule"; ModuleVersion = "2.0"; GUID = "cfc45206-1e49-459d-a8ad-5b571ef94857" })
     # Example: RequiredModules = @('MyModule', @{ModuleName = 'MyDependentModule'; RequiredVersion = '1.5'; GUID = 'cfc45206-1e49-459d-a8ad-5b571ef94857' }).
     RequiredModules      = @(
-        'GitHub.Actions',
+        @{
+            ModuleName = 'GitHub.Actions'
+        },
         'GitHub.Activity',
         'GitHub.Apps',
         'GitHub.Billing',
