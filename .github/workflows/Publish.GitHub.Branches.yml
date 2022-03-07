@@ -3,6 +3,7 @@ name: Publish [GitHub.Branches]
 on:
   push:
     paths:
+    - scripts/**
     - src/GitHub.Branches/**
     - .github/workflows/Publish.GitHub.Branches.yml
   workflow_dispatch:
@@ -21,6 +22,11 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
+
+      - name: Add 'src' to path
+        run: |
+          $SRCPath = Get-Item -Path .\src\ | Select-Object -ExpandProperty FullName
+          $env:Path += ";$SRCPath"
 
       - name: Publish module
         run: |

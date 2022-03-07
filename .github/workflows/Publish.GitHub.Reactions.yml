@@ -3,6 +3,7 @@ name: Publish [GitHub.Reactions]
 on:
   push:
     paths:
+    - scripts/**
     - src/GitHub.Reactions/**
     - .github/workflows/Publish.GitHub.Reactions.yml
   workflow_dispatch:
@@ -21,6 +22,11 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
+
+      - name: Add 'src' to path
+        run: |
+          $SRCPath = Get-Item -Path .\src\ | Select-Object -ExpandProperty FullName
+          $env:Path += ";$SRCPath"
 
       - name: Publish module
         run: |
