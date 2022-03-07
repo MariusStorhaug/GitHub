@@ -27,4 +27,5 @@ jobs:
         run: |
           $SRCPath = Get-Item -Path .\src\ | Select-Object -ExpandProperty FullName
           $env:Path += ";$SRCPath"
+          $env:Path -Split ';'
           .\scripts\Publish-Module.ps1 -ModuleName $env:ModuleName -APIKey $env:APIKey -Verbose
