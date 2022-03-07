@@ -61,47 +61,54 @@
     # Example: RequiredModules = @('MyModule', @{ModuleName = 'MyDependentModule'; RequiredVersion = '1.5'; GUID = 'cfc45206-1e49-459d-a8ad-5b571ef94857' }).
     RequiredModules      = @(
         @{
-            ModuleName = 'GitHub.Actions'
+            ModuleName    = 'GitHub.Actions'
+            ModuleVersion = '0.0'
         },
-        'GitHub.Activity',
-        'GitHub.Apps',
-        'GitHub.Billing',
-        'GitHub.Branches',
-        'GitHub.Checks',
-        'GitHub.CodeScanning',
-        'GitHub.CodesOfConduct',
-        'GitHub.Codespaces',
-        'GitHub.Collaborators',
-        'GitHub.Commits',
-        'GitHub.Core',
-        'GitHub.Dependabot',
-        'GitHub.Deployments',
-        'GitHub.Emojis',
-        'GitHub.EnterpriseAdmin',
-        'GitHub.Gists',
-        'GitHub.Git',
-        'GitHub.GitIgnore',
-        'GitHub.Interactions',
-        'GitHub.Issues',
-        'GitHub.Licenses',
-        'GitHub.Markdown',
-        'GitHub.Meta',
-        'GitHub.Migrations',
-        'GitHub.OAuthAuthorizations',
-        'GitHub.Orgs',
-        'GitHub.Packages',
-        'GitHub.Projects',
-        'GitHub.Pulls',
-        'GitHub.RateLimit',
-        'GitHub.Reactions',
-        'GitHub.Repos',
-        'GitHub.SCIM'
-        'GitHub.Search'
-        'GitHub.SecretScanning'
-        'GitHub.ServerStatistics'
-        'GitHub.Teams'
-        'GitHub.Users'
-        'GitHub.Webhooks'
+        @{
+            ModuleName    = 'GitHub.Activity'
+            ModuleVersion = '0.0'
+        },
+        @{
+            ModuleName    = 'GitHub.Apps'
+            ModuleVersion = '0.0'
+        }
+        # 'GitHub.Billing',
+        # 'GitHub.Branches',
+        # 'GitHub.Checks',
+        # 'GitHub.CodeScanning',
+        # 'GitHub.CodesOfConduct',
+        # 'GitHub.Codespaces',
+        # 'GitHub.Collaborators',
+        # 'GitHub.Commits',
+        # 'GitHub.Core',
+        # 'GitHub.Dependabot',
+        # 'GitHub.Deployments',
+        # 'GitHub.Emojis',
+        # 'GitHub.EnterpriseAdmin',
+        # 'GitHub.Gists',
+        # 'GitHub.Git',
+        # 'GitHub.GitIgnore',
+        # 'GitHub.Interactions',
+        # 'GitHub.Issues',
+        # 'GitHub.Licenses',
+        # 'GitHub.Markdown',
+        # 'GitHub.Meta',
+        # 'GitHub.Migrations',
+        # 'GitHub.OAuthAuthorizations',
+        # 'GitHub.Orgs',
+        # 'GitHub.Packages',
+        # 'GitHub.Projects',
+        # 'GitHub.Pulls',
+        # 'GitHub.RateLimit',
+        # 'GitHub.Reactions',
+        # 'GitHub.Repos',
+        # 'GitHub.SCIM'
+        # 'GitHub.Search'
+        # 'GitHub.SecretScanning'
+        # 'GitHub.ServerStatistics'
+        # 'GitHub.Teams'
+        # 'GitHub.Users'
+        # 'GitHub.Webhooks'
     )
 
     # Assemblies that must be loaded prior to importing this module
