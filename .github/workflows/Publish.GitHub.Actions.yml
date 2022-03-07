@@ -25,4 +25,3 @@ jobs:
       - name: Publish module
         run: |
           .\scripts\Publish-Module.ps1 -ModuleName $env:ModuleName -APIKey $env:APIKey -Verbose
-
