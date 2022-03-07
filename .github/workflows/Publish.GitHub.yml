@@ -23,15 +23,8 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
 
-      - name: Add 'src' to path
+      - name: Publish module
         run: |
           $SRCPath = Get-Item -Path .\src\ | Select-Object -ExpandProperty FullName
           $env:Path += ";$SRCPath"
-
-      - name: Check Path
-        run: |
-          $env:Path -Split ';'
-
-      - name: Publish module
-        run: |
           .\scripts\Publish-Module.ps1 -ModuleName $env:ModuleName -APIKey $env:APIKey -Verbose
