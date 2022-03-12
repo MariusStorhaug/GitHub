@@ -1,47 +1,74 @@
-﻿# GitHub
+﻿
+<#
+.SYNOPSIS
+Short description
 
-# https://docs.github.com/en/rest/overview/resources-in-the-rest-api
-# https://docs.github.com/en/rest/reference
+.DESCRIPTION
+Long description
 
+.PARAMETER Owner
+Parameter description
+
+.PARAMETER Repo
+Parameter description
+
+.PARAMETER Token
+Parameter description
+
+.EXAMPLE
+An example
+
+.NOTES
+https://docs.github.com/en/rest/reference/repos#get-a-repository
+#>
 function Get-GitHubRepoTeams {
     [CmdletBinding()]
     param (
-        $Owner = $script:Owner,
-        $Repo = $script:Repo,
-        $Token = $script:Token
+        [Parameter()]
+        [string] $Owner = $script:Owner,
+
+        [Parameter()]
+        [string] $Repo = $script:Repo,
+
+        [Parameter()]
+        [string] $Token = $script:Token
     )
 
-    # API Reference
-    # https://docs.github.com/en/rest/reference/repos#get-a-repository
-    $APICall = @{
-        Uri     = "$APIBaseURI/repos/$Owner/$Repo/teams"
-        Headers = @{
-            Authorization  = "token $Token"
-            'Content-Type' = 'application/json'
-        }
-        Method  = 'GET'
-        Body    = @{} | ConvertTo-Json -Depth 100
+    $InputObject = @{
+        Owner = $Owner
+        Repo = $Repo
+        Token = $Token
+        Method = 'Get'
+        APIEndpoint = "repos/$Owner/$Repo/teams"
     }
-    try {
-        if ($PSBoundParameters.ContainsKey('Verbose')) {
-            $APICall
-        }
-        $Response = Invoke-RestMethod @APICall
-    } catch {
-        throw $_
-    }
+
+    $Response = Invoke-GitHubAPI @InputObject
+
     return $Response
 }
 
 function Get-GitHubRepoBranch {
     [CmdletBinding()]
     param (
-        $Owner = $script:Owner,
-        $Repo = $script:Repo,
-        $Token = $script:Token
+        [Parameter()]
+        [string] $Owner = $script:Owner,
+
+        [Parameter()]
+        [string] $Repo = $script:Repo,
+
+        [Parameter()]
+        [string] $Token = $script:Token
     )
 
-    $Response = Invoke-GitHubAPI -Method Get -APIEndpoint repos/$owner/$repo/branches
+    $InputObject = @{
+        Owner       = $Owner
+        Repo        = $Repo
+        Token       = $Token
+        Method      = 'Get'
+        APIEndpoint = "repos/$Owner/$Repo/branches"
+    }
+
+    $Response = Invoke-GitHubAPI @InputObject
 
     return $Response
 }
@@ -78,21 +105,24 @@ An example
 https://docs.github.com/en/rest/reference/actions#list-repository-workflows
 #>
 Function Get-GitHubWorkflow {
-    [CmdletBinding(
-        DefaultParameterSetName = 'ByName'
-    )]
+    [CmdletBinding(DefaultParameterSetName = 'ByName')]
     param (
-        $Owner = $script:Owner,
-        $Repo = $script:Repo,
-        $Token = $script:Token ,
-        [Parameter(
-            ParameterSetName = 'ByName'
-        )]
+        [Parameter()]
+        [string] $Owner = $script:Owner,
+
+        [Parameter()]
+        [string] $Repo = $script:Repo,
+
+        [Parameter()]
+        [string] $Token = $script:Token,
+
+        [Parameter(ParameterSetName = 'ByName')]
         [string] $Name,
-        [Parameter(
-            ParameterSetName = 'ByID'
-        )]
+
+        [Parameter(ParameterSetName = 'ByID')]
         [string] $ID,
+
+        [Parameter()]
         [int] $PageSize = 30
     )
 
@@ -107,12 +137,43 @@ Function Get-GitHubWorkflow {
     return $workflows
 }
 
+<#
+.SYNOPSIS
+Short description
+
+.DESCRIPTION
+Long description
+
+.PARAMETER Owner
+Parameter description
+
+.PARAMETER Repo
+Parameter description
+
+.PARAMETER Token
+Parameter description
+
+.PARAMETER ID
+Parameter description
+
+.EXAMPLE
+An example
+
+.NOTES
+https://docs.github.com/en/rest/reference/actions#disable-a-workflow
+#>
 Function Disable-GitHubWorkflow {
     [CmdletBinding()]
     param (
-        $Owner = $script:Owner,
-        $Repo = $script:Repo,
-        $Token = $script:Token ,
+        [Parameter()]
+        [string] $Owner = $script:Owner,
+
+        [Parameter()]
+        [string] $Repo = $script:Repo,
+
+        [Parameter()]
+        [string] $Token = $script:Token,
+
         [Parameter(
             Mandatory,
             ValueFromPipelineByPropertyName
@@ -121,28 +182,22 @@ Function Disable-GitHubWorkflow {
     )
 
     begin {}
+    
     process {
-        # API Reference
-        # https://docs.github.com/en/rest/reference/actions#disable-a-workflow
-        $APICall = @{
-            Uri     = "$APIBaseURI/repos/$Owner/$Repo/actions/workflows/$ID/disable"
-            Headers = @{
-                Authorization  = "token $Token"
-                'Content-Type' = 'application/json'
-            }
-            Method  = 'PUT'
-            Body    = @{} | ConvertTo-Json -Depth 100
+        $InputObject = @{
+            Owner       = $Owner
+            Repo        = $Repo
+            Token       = $Token
+            Method      = 'PUT'
+            APIEndpoint = "repos/$Owner/$Repo/actions/workflows/$ID/disable"
         }
-        try {
-            if ($PSBoundParameters.ContainsKey('Verbose')) {
-                $APICall
-            }
-            $Response = Invoke-RestMethod @APICall
-        } catch {
-            throw $_
-        }
+
+        $Response = Invoke-GitHubAPI @InputObject
+
     }
-    end {}
+    end {
+        return $Response
+    }
 }
 
 Function Enable-GitHubWorkflow {

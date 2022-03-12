@@ -28,13 +28,16 @@ function Invoke-GitHubAPI {
         [string] $Token = $script:Token
     )
     $APICall = @{
-        Uri     = ("$script:APIBaseURI/$APIEndpoint").Replace('\', '/').Replace('//', '/')
+        Uri     = ("$script:APIBaseURI/$APIEndpoint").Replace('\', '/')
         Headers = @{
             Authorization  = "token $Token"
             'Content-Type' = 'application/vnd.github.v3+json' #'application/json'
         }
         Method  = $Method
         Body    = $Body | ConvertTo-Json -Depth 100
+    }
+    if ($PSBoundParameters.ContainsKey('Verbose')) {
+        Write-Verbose $APICall
     }
     try {
         $Response = Invoke-RestMethod @APICall
@@ -74,17 +77,13 @@ function Connect-GitHubAccount {
     [CmdletBinding()]
     param (
         [Parameter()]
-        [String]
-        $Owner,
+        [String] $Owner,
         [Parameter()]
-        [String]
-        $Repo,
+        [String] $Repo,
         [Parameter(Mandatory)]
-        [String]
-        $Token,
+        [String] $Token,
         [Parameter()]
-        [String]
-        $APIBaseURI = 'https://api.github.com'
+        [String] $APIBaseURI = 'https://api.github.com'
     )
 
     $script:APIBaseURI = $APIBaseURI
@@ -92,7 +91,7 @@ function Connect-GitHubAccount {
     $script:Repo = $Repo
     $script:Token = $Token
 
-    Get-GitHubUser
+    Get-GitHubContext
 
 }
 
@@ -113,14 +112,23 @@ An example
 .NOTES
 https://docs.github.com/en/rest/reference/users#get-the-authenticated-user
 #>
-function Get-GitHubUser {
+function Get-GitHubContext {
     [CmdletBinding()]
     param (
-        $Token = $script:Token
+        [Parameter()]
+        [string] $Token = $script:Token
     )
 
-    $Response = Invoke-GitHubAPI -APIEndpoint 'user' -Token $Token
+    $InputObject = @{
+            Owner       = $Owner
+            Repo        = $Repo
+            Token       = $Token
+            Method      = 'GET'
+            APIEndpoint = "user"
+        }
+
+    $Response = Invoke-GitHubAPI @InputObject
 
     return $Response
 }
-New-Alias -Name Get-GitHubContext -Value Get-GitHubUser -Force
+New-Alias -Name Get-GitHubUser -Value Get-GitHubContext -Force

@@ -79,7 +79,7 @@
     FunctionsToExport = @(
         'Invoke-GitHubAPI',
         'Connect-GitHubAccount',
-        'Get-GitHubUser'
+        'Get-GitHubContext'
     )
 
     # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
@@ -90,7 +90,7 @@
 
     # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
     AliasesToExport   = @(
-        'Get-GitHubContext'
+        'Get-GitHubUser'
     )
 
     # DSC resources to export from this module
