@@ -3,6 +3,7 @@ name: Publish [GitHub.EnterpriseAdmin]
 on:
   push:
     paths:
+    - scripts/**
     - src/GitHub.EnterpriseAdmin/**
     - .github/workflows/Publish.GitHub.EnterpriseAdmin.yml
   workflow_dispatch:
@@ -24,12 +25,4 @@ jobs:
 
       - name: Publish module
         run: |
-          $Info = Invoke-Expression (Get-Content .\src\$env:ModuleName\$env:ModuleName.psd1 -Raw)
-          foreach ($Module in $Info.RequiredModules) {
-            Write-Verbose "Install module: $($Module.ModuleName)"
-            Install-Module -Name $Module.ModuleName -Force -Verbose
-          }
-
-          .\scripts\Set-ModuleVersion.ps1 -ModuleName $env:ModuleName -Verbose
-          Publish-Module -Path "src/$env:ModuleName" -NuGetApiKey "$env:APIKey" -Verbose
-
+          .\scripts\Publish-Module.ps1 -ModuleName $env:ModuleName -APIKey $env:APIKey -Verbose

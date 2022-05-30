@@ -30,21 +30,24 @@ An example
 https://docs.github.com/en/rest/reference/actions#list-repository-workflows
 #>
 Function Get-GitHubWorkflow {
-    [CmdletBinding(
-        DefaultParameterSetName = 'ByName'
-    )]
+    [CmdletBinding(DefaultParameterSetName = 'ByName')]
     param (
-        $Owner = $script:Owner,
-        $Repo = $script:Repo,
-        $Token = $script:Token ,
-        [Parameter(
-            ParameterSetName = 'ByName'
-        )]
+        [Parameter()]
+        [string] $Owner = $script:Owner,
+
+        [Parameter()]
+        [string] $Repo = $script:Repo,
+
+        [Parameter()]
+        [string] $Token = $script:Token,
+
+        [Parameter(ParameterSetName = 'ByName')]
         [string] $Name,
-        [Parameter(
-            ParameterSetName = 'ByID'
-        )]
+
+        [Parameter(ParameterSetName = 'ByID')]
         [string] $ID,
+
+        [Parameter()]
         [int] $PageSize = 30
     )
 

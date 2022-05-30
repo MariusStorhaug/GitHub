@@ -1,12 +1,25 @@
 ﻿function Get-GitHubRepoBranch {
     [CmdletBinding()]
     param (
-        $Owner = $script:Owner,
-        $Repo = $script:Repo,
-        $Token = $script:Token
+        [Parameter()]
+        [string] $Owner = $script:Owner,
+
+        [Parameter()]
+        [string] $Repo = $script:Repo,
+
+        [Parameter()]
+        [string] $Token = $script:Token
     )
 
-    $Response = Invoke-GitHubAPI -Method Get -APIEndpoint repos/$owner/$repo/branches
+    $InputObject = @{
+        Owner       = $Owner
+        Repo        = $Repo
+        Token       = $Token
+        Method      = 'Get'
+        APIEndpoint = "repos/$Owner/$Repo/branches"
+    }
+
+    $Response = Invoke-GitHubAPI @InputObject
 
     return $Response
 }

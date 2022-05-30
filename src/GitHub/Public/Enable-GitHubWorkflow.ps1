@@ -1,9 +1,15 @@
 ﻿Function Enable-GitHubWorkflow {
     [CmdletBinding()]
     param (
-        $Owner = $script:Owner,
-        $Repo = $script:Repo,
-        $Token = $script:Token ,
+        [Parameter()]
+        [string] $Owner = $script:Owner,
+
+        [Parameter()]
+        [string] $Repo = $script:Repo,
+
+        [Parameter()]
+        [string] $Token = $script:Token,
+
         [Parameter(
             Mandatory,
             ValueFromPipelineByPropertyName
@@ -31,6 +37,7 @@
         } catch {
             throw $_
         }
+        return $Response
     }
     end {}
 }

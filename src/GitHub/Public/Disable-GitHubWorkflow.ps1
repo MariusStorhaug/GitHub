@@ -1,9 +1,40 @@
-﻿Function Disable-GitHubWorkflow {
+﻿<#
+.SYNOPSIS
+Short description
+
+.DESCRIPTION
+Long description
+
+.PARAMETER Owner
+Parameter description
+
+.PARAMETER Repo
+Parameter description
+
+.PARAMETER Token
+Parameter description
+
+.PARAMETER ID
+Parameter description
+
+.EXAMPLE
+An example
+
+.NOTES
+https://docs.github.com/en/rest/reference/actions#disable-a-workflow
+#>
+Function Disable-GitHubWorkflow {
     [CmdletBinding()]
     param (
-        $Owner = $script:Owner,
-        $Repo = $script:Repo,
-        $Token = $script:Token ,
+        [Parameter()]
+        [string] $Owner = $script:Owner,
+
+        [Parameter()]
+        [string] $Repo = $script:Repo,
+
+        [Parameter()]
+        [string] $Token = $script:Token,
+
         [Parameter(
             Mandatory,
             ValueFromPipelineByPropertyName
@@ -12,26 +43,20 @@
     )
 
     begin {}
+
     process {
-        # API Reference
-        # https://docs.github.com/en/rest/reference/actions#disable-a-workflow
-        $APICall = @{
-            Uri     = "$APIBaseURI/repos/$Owner/$Repo/actions/workflows/$ID/disable"
-            Headers = @{
-                Authorization  = "token $Token"
-                'Content-Type' = 'application/json'
-            }
-            Method  = 'PUT'
-            Body    = @{} | ConvertTo-Json -Depth 100
+        $InputObject = @{
+            Owner       = $Owner
+            Repo        = $Repo
+            Token       = $Token
+            Method      = 'PUT'
+            APIEndpoint = "repos/$Owner/$Repo/actions/workflows/$ID/disable"
         }
-        try {
-            if ($PSBoundParameters.ContainsKey('Verbose')) {
-                $APICall
-            }
-            $Response = Invoke-RestMethod @APICall
-        } catch {
-            throw $_
-        }
+
+        $Response = Invoke-GitHubAPI @InputObject
+
     }
-    end {}
+    end {
+        return $Response
+    }
 }

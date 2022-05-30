@@ -1,29 +1,47 @@
+<#
+.SYNOPSIS
+Short description
+
+.DESCRIPTION
+Long description
+
+.PARAMETER Owner
+Parameter description
+
+.PARAMETER Repo
+Parameter description
+
+.PARAMETER Token
+Parameter description
+
+.EXAMPLE
+An example
+
+.NOTES
+https://docs.github.com/en/rest/reference/repos#get-a-repository
+#>
 function Get-GitHubRepoTeams {
     [CmdletBinding()]
     param (
-        $Owner = $script:Owner,
-        $Repo = $script:Repo,
-        $Token = $script:Token
+        [Parameter()]
+        [string] $Owner = $script:Owner,
+
+        [Parameter()]
+        [string] $Repo = $script:Repo,
+
+        [Parameter()]
+        [string] $Token = $script:Token
     )
 
-    # API Reference
-    # https://docs.github.com/en/rest/reference/repos#get-a-repository
-    $APICall = @{
-        Uri     = "$APIBaseURI/repos/$Owner/$Repo/teams"
-        Headers = @{
-            Authorization  = "token $Token"
-            'Content-Type' = 'application/json'
-        }
-        Method  = 'GET'
-        Body    = @{} | ConvertTo-Json -Depth 100
+    $InputObject = @{
+        Owner       = $Owner
+        Repo        = $Repo
+        Token       = $Token
+        Method      = 'Get'
+        APIEndpoint = "repos/$Owner/$Repo/teams"
     }
-    try {
-        if ($PSBoundParameters.ContainsKey('Verbose')) {
-            $APICall
-        }
-        $Response = Invoke-RestMethod @APICall
-    } catch {
-        throw $_
-    }
+
+    $Response = Invoke-GitHubAPI @InputObject
+
     return $Response
 }

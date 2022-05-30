@@ -27,17 +27,13 @@ function Connect-GitHubAccount {
     [CmdletBinding()]
     param (
         [Parameter()]
-        [String]
-        $Owner,
+        [String] $Owner,
         [Parameter()]
-        [String]
-        $Repo,
+        [String] $Repo,
         [Parameter(Mandatory)]
-        [String]
-        $Token,
+        [String] $Token,
         [Parameter()]
-        [String]
-        $APIBaseURI = 'https://api.github.com'
+        [String] $APIBaseURI = 'https://api.github.com'
     )
 
     $script:APIBaseURI = $APIBaseURI
@@ -45,6 +41,6 @@ function Connect-GitHubAccount {
     $script:Repo = $Repo
     $script:Token = $Token
 
-    Get-GitHubUser
+    Get-GitHubContext
 
 }

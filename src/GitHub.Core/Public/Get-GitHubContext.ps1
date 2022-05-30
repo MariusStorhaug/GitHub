@@ -15,14 +15,23 @@ An example
 .NOTES
 https://docs.github.com/en/rest/reference/users#get-the-authenticated-user
 #>
-function Get-GitHubUser {
+function Get-GitHubContext {
     [CmdletBinding()]
     param (
-        $Token = $script:Token
+        [Parameter()]
+        [string] $Token = $script:Token
     )
 
-    $Response = Invoke-GitHubAPI -APIEndpoint 'user' -Token $Token
+    $InputObject = @{
+        Owner       = $Owner
+        Repo        = $Repo
+        Token       = $Token
+        Method      = 'GET'
+        APIEndpoint = 'user'
+    }
+
+    $Response = Invoke-GitHubAPI @InputObject
 
     return $Response
 }
-New-Alias -Name Get-GitHubContext -Value Get-GitHubUser -Force
+New-Alias -Name Get-GitHubUser -Value Get-GitHubContext -Force

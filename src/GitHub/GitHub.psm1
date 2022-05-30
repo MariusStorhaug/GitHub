@@ -1,4 +1,4 @@
-﻿# GitHub
+# GitHub
 [Cmdletbinding()]
 param()
 
@@ -22,9 +22,6 @@ Foreach ($Folder in $Folders) {
             Write-Verbose "Importing $($File)"
             Import-Module $File
             Write-Verbose "Importing $($File): Done"
-        }
-    }
-}
 
 $Param = @{
     Function = (Get-ChildItem -Path "$PSScriptRoot\public" -Include '*.ps1' -Recurse).BaseName
