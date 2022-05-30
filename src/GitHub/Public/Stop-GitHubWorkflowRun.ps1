@@ -32,6 +32,7 @@
         } catch {
             throw $_
         }
+        return $Response
     }
     end {}
 }

@@ -12,28 +12,28 @@
     # RootModule = ''
 
     # Version number of this module.
-    ModuleVersion     = '0.0.1'
+    ModuleVersion        = '0.0.1'
 
     # Supported PSEditions
     CompatiblePSEditions = 'Core'
 
     # ID used to uniquely identify this module
-    GUID              = '88edc5e0-c643-475e-be6f-e6e1d98eaa1f'
+    GUID                 = '88edc5e0-c643-475e-be6f-e6e1d98eaa1f'
 
     # Author of this module
-    Author            = 'Marius Storhaug'
+    Author               = 'Marius Storhaug'
 
     # Company or vendor of this module
-    CompanyName       = 'Marius Storhaug'
+    CompanyName          = 'Marius Storhaug'
 
     # Copyright statement for this module
-    Copyright         = '(c) Marius Storhaug. All rights reserved.'
+    Copyright            = '(c) Marius Storhaug. All rights reserved.'
 
     # Description of the functionality provided by this module
-    Description       = 'PowerShell Module for GitHub.Actions'
+    Description          = 'PowerShell Module for GitHub.Actions'
 
     # Minimum version of the PowerShell engine required by this module
-    PowerShellVersion = '7.1'
+    PowerShellVersion    = '7.1'
 
     # Name of the PowerShell host required by this module
     # PowerShellHostName = ''
@@ -58,7 +58,7 @@
     # and hash tables in the parameter value.
     # Example: RequiredModules = @("MyModule", @{ModuleName = "MyDependentModule"; ModuleVersion = "2.0"; GUID = "cfc45206-1e49-459d-a8ad-5b571ef94857" })
     # Example: RequiredModules = @('MyModule', @{ModuleName = 'MyDependentModule'; RequiredVersion = '1.5'; GUID = 'cfc45206-1e49-459d-a8ad-5b571ef94857' })
-    RequiredModules   = @()
+    RequiredModules      = @()
 
     # Assemblies that must be loaded prior to importing this module
     # RequiredAssemblies = @()
@@ -76,16 +76,16 @@
     # NestedModules = @()
 
     # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-    FunctionsToExport = '*'
+    FunctionsToExport    = '*'
 
     # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-    CmdletsToExport   = @()
+    CmdletsToExport      = @()
 
     # Variables to export from this module
-    VariablesToExport = '*'
+    VariablesToExport    = '*'
 
     # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-    AliasesToExport   = @()
+    AliasesToExport      = @()
 
     # DSC resources to export from this module
     # DscResourcesToExport = @()
@@ -97,7 +97,7 @@
     # FileList = @()
 
     # Private data to pass to the module specified in RootModule/ModuleToProcess. This may also contain a PSData hashtable with additional module metadata used by PowerShell.
-    PrivateData       = @{
+    PrivateData          = @{
 
         PSData = @{
 
